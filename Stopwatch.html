@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .counter-container {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #display {
+            font-size: 60px;
+            font-weight: bold;
+            color: #479af4;
+            border: 3px solid #0870df;
+            border-radius: 10px;
+            padding: 15px;
+            background: #f4f8ff;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #startBtn {
+            background: #28a745;
+        }
+
+        #startBtn:hover {
+            background: #218838;
+        }
+
+        #stopBtn {
+            background: #dc3545;
+        }
+
+        #stopBtn:hover {
+            background: #c82333;
+        }
+
+        #resumeBtn {
+            background: #007bff;
+        }
+
+        #resumeBtn:hover {
+            background: #0069d9;
+        }
+
+        #resetBtn {
+            background: #748390;
+        }
+
+        #resetBtn:hover {
+            background: #5a6268;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="counter-container">
+        <h1>Counter App</h1>
+
+        <div id="display">0</div>
+
+        <div class="buttons">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resumeBtn">Resume</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let timerId = null;
+
+        const display = document.getElementById("display");
+        const startBtn = document.getElementById("startBtn");
+        const ruko = document.getElementById("ruko");
+        const resumeBtn = document.getElementById("resumeBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        function runCounter() {
+            if (timerId !== null) {
+                return;
+            }
+
+            timerId = setInterval(() => {
+                count++;
+                display.textContent = count;
+            }, 1000);
+        }
+
+        startBtn.addEventListener("click", () => {
+            clearInterval(timerId);
+            timerId = null;
+            count = 0;
+            display.textContent = count;
+            runCounter();
+        });
+
+        ruko.addEventListener("click", () => {
+            clearInterval(timerId);
+            timerId = null;
+        });
+
+        resumeBtn.addEventListener("click", () => {
+            runCounter();
+        });
+
+        resetBtn.addEventListener("click", () => {
+            clearInterval(timerId);
+            timerId = null;
+            count = 0;
+            display.textContent = count;
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

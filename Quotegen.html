@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #aeaeb8;
+            margin: 0;
+        }
+
+        .quote-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 90%;
+            text-align: left;
+            border: 1px solid #eaeaea;
+        }
+
+        .quote-container h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #133c9c;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        button {
+            background-color: #262c99;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #bdc1cc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quote-container">
+        <h2>Quote Generator</h2>
+        <div class="quote-text" id="quote">"First, solve the problem. Then, write the code."</div>
+        <div class="quote-author" id="author">— John Johnson</div>
+        <button id="new-quote-btn">New Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            { 
+                text: "First, solve the problem. Then, write the code.", 
+                author: "John Johnson" 
+            },
+            { 
+                text: "A rose by any other name would smell as sweet", 
+                author: "William Shakespeare" 
+            },
+            { 
+                text: "I have always depended on the kindness of strangers.", 
+                author: "Blanche Dubois" 
+            },
+            {
+                text: "Talk is cheap. Show me the code.",
+                author: "Linus Torvalds"
+            },
+            {
+                text:"Be yourself; everyone else is already taken",
+                author:"Oscar Widle"
+            },
+            {
+                text:"Fullo ki dukan khol lo kush bu ka vyapar kar lo ishq mai khata hai to khata ye so bar kar lo tum",
+                author:"Rahat Indori"
+
+            },{
+                text:"The most difficult thing is the decision to act, the rest is merely tenacity",
+                author:"Amelia Earhart"
+            }
+        ];
+
+        const quoteElement = document.getElementById('quote');
+        const authorElement = document.getElementById('author');
+        const buttonElement = document.getElementById('new-quote-btn');
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
+
+            quoteElement.textContent = `"${randomQuote.text}"`;
+            authorElement.textContent = `— ${randomQuote.author}`;
+        }
+
+        buttonElement.addEventListener('click', generateQuote);
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>StudentcardDom</title>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background:#010101;
+        padding:40px;
+    }
+
+    #container{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        margin-top:20px;
+    }
+
+    button{
+        padding:15px 30px;
+        border:none;
+        border-radius:7px;
+        background:rgb(118, 92, 211);
+        color:rgb(255, 255, 255);
+        cursor:pointer;
+        font-size:16px;
+    }
+</style>
+</head>
+<body>
+
+	<button>Create Student Card</button>
+	<div id="container"></div>
+
+ <script>
+	const btn = document.querySelector("button");
+	const container = document.querySelector("#container");
+
+	btn.addEventListener("click",()=>{
+
+    const card = document.createElement("div");
+    card.className = "student-card";
+    card.id = "card1";
+    card.setAttribute("data-course","MERN");
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Student Profile";
+
+    const name = document.createElement("p");
+    name.textContent = "Name : Megh";
+
+    const course = document.createElement("p");
+    course.textContent = "Course : CSE AI&DS";
+
+    const college = document.createElement("p");
+    college.textContent = "College : PIET";
+
+    const badge = document.createElement("span");
+    badge.textContent = "Active Student";
+    badge.className = "badge";
+
+    card.style.backgroundColor = "white";
+    card.style.padding = "20px";
+    card.style.width = "350px";
+    card.style.border = "2px solid black";
+    card.style.borderRadius = "12px";
+    card.style.boxShadow = "0px 0px 10px gray";
+
+    badge.style.backgroundColor = "green";
+    badge.style.color = "white";
+    badge.style.padding = "8px 14px";
+    badge.style.borderRadius = "20px";
+    badge.style.display = "inline-block";
+    badge.style.marginTop = "10px";
+
+    card.append(
+        heading,
+        name,
+        course,
+        college,
+        badge
+    );
+
+    container.append(card);
+
+    console.log(card.classList);
+    card.classList.add("premium");
+
+    console.log(card.classList);
+    card.classList.remove("premium");
+    console.log(card.classList);
+
+    card.classList.replace(
+        "student-card",
+        "developer-card"
+    );
+
+    console.log(card.classList);
+
+    console.log(card.classList.contains("developer-card"));
+    card.classList.toggle("selected");
+
+    console.log(card.classList);
+
+    card.classList.toggle("selected");
+    console.log(card.classList);
+
+    console.log(card.getAttribute("data-course"));
+    console.log(card.hasAttribute("data-course"));
+
+    card.setAttribute("data-course","Full Stack");
+    console.log(card.getAttribute("data-course"));
+
+    card.removeAttribute("data-course");
+    console.log(card.hasAttribute("data-course"));
+
+    console.log("Parent");
+    console.log(card.parentElement);
+    console.log("Container Children");
+
+    console.log(container.children);
+
+    console.log("Container ChildNodes");
+    console.log(container.childNodes);
+
+    console.log("First Child");
+    console.log(container.firstElementChild);
+
+    console.log("Last Child");
+    console.log(container.lastElementChild);
+
+    console.log("Card First Child");
+    console.log(card.firstElementChild);
+
+    console.log("Card Last Child");
+    console.log(card.lastElementChild);
+
+
+    const clone = card.cloneNode(true);
+    clone.id = "card2";
+    clone.children[1].textContent = "Name : Neel";
+    clone.children[2].textContent = "Course : Full Stack Developer";
+    container.append(clone);
+
+    const cloneAum = card.cloneNode(true);
+    cloneAum.id = "card3";
+    cloneAum.children[1].textContent = "Name : Aum Jagtap";
+    cloneAum.children[2].textContent = "Course : HR";
+    container.append(cloneAum);
+
+    const cloneAry = card.cloneNode(true);
+    cloneAry.id = "card4";
+    cloneAry.children[1].textContent = "Name : Saksham";
+    cloneAry.children[2].textContent = "Course : Fullstack Developer";
+    container.append(cloneAry);
+
+
+    card.removeChild(college);
+
+    const batch = document.createElement("p");
+    batch.textContent = "Batch : 2028";
+    card.insertBefore(batch,course);
+
+    console.log(container.innerHTML);
+    console.log(container.children.length);
+
+  });
+
+</script>
+</body>
+</html>
