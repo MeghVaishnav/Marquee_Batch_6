@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        input, button {
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+        }
+        input {
+            cursor: text;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            margin-left: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>To-Do List Builder</h2>
+
+    <div class="controls">
+        <input type="text" id="todo-input" placeholder="Enter Task">
+        <button id="add-btn">Add</button>
+        
+        <button id="duplicate-btn">Duplicate Last</button>
+        <button id="insert-top-btn">Insert at Top</button>
+    </div>
+
+    <ul id="todo-list"></ul>
+
+    <script>
+        const todoList = document.getElementById('todo-list');
+        const todoInput = document.getElementById('todo-input');
+        const addBtn = document.getElementById('add-btn');
+        const duplicateBtn = document.getElementById('duplicate-btn');
+        const insertTopBtn = document.getElementById('insert-top-btn');
+
+        function createDeleteButton() {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = 'X';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.addEventListener('click', function() {
+                this.parentElement.remove(); 
+            });
+            return deleteBtn;
+        }
+        
+        addBtn.addEventListener('click', function() {
+            const taskText = todoInput.value.trim();
+            if (taskText === '') return;
+
+            const li = document.createElement('li');
+            li.innerText = taskText;
+            
+            const deleteBtn = createDeleteButton();
+            li.appendChild(deleteBtn);
+            
+            todoList.appendChild(li);
+            todoInput.value = ''; 
+        });
+
+        duplicateBtn.addEventListener('click', function() {
+            const lastItem = todoList.lastElementChild;
+            if (!lastItem) return; 
+
+            const clone = lastItem.cloneNode(true);
+            
+            const clonedDeleteBtn = clone.querySelector('.delete-btn');
+            if (clonedDeleteBtn) {
+                clonedDeleteBtn.addEventListener('click', function() {
+                    clone.remove();
+                });
+            }
+
+            todoList.appendChild(clone);
+        });
+
+        insertTopBtn.addEventListener('click', function() {
+            const li = document.createElement('li');
+            li.innerText = 'Priority Task ';
+            
+            const deleteBtn = createDeleteButton();
+            li.appendChild(deleteBtn);
+
+            todoList.insertBefore(li, todoList.firstChild);
+        });
+    </script>
+
+</body>
+</html>
