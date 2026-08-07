@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo Using CreateElement</h1>
+    <button>Click Me</button>
+
+    <script>
+        let p = document.createElement("p")
+        p.innerText = "Go to the GYM"
+
+        document.querySelector("body").append(p)
+
+        let btn = document.querySelector("button")
+        function dont(){
+            let new1 = prompt("Enter new word for Button")
+            p.innerHTML=new1;
+        }
+        btn.addEventListener("click", dont)
+    </script>
+</body>
+</html>
