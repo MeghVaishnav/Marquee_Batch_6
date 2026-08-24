@@ -1,0 +1,49 @@
+.Main {
+background-color: aliceblue;
+
+}
+
+.Box-container {
+    background-color: black;
+    height: 50vh;
+    position: relative;
+    
+}
+
+.Box {
+    background-color: rgb(159, 31, 129);
+    height: 50px;
+    width: 50px;
+    padding: 60px;
+    border-radius: 70px;
+    color: rgb(14, 41, 139);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#Box1 {
+    background-color: brown;
+    position: absolute;
+   
+    right: 0px;
+    bottom:10px;
+}
+#Box2 {
+    background-color: rgb(31, 159, 129);
+    position: fixed;
+    left: 0px;
+    top: 10px;
+}
+
+
+.Main2 {
+    background-color: rgb(255, 0, 0);
+    height: 50vh;
+}
+.Box-container2 {
+
+    background-color: blueviolet;
+    height: 50vh;
+    position : sticky;
+}
